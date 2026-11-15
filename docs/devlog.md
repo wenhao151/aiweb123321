@@ -97,6 +97,15 @@
   并说明 `/api/health` 回显 `embed_dim=1024` 与离线哈希向量 512 维的口径差异，避免答辩被追问。
 - 验证方式：抽查关键结论与代码一致性、`git diff --stat`。
 
+### 当日补记（15:52）
+
+- 在根目录 `.env` 第 34 行填入真实 `LLM_API_KEY`（文件已被 gitignore 排除，未入库、未出现在任何公开材料）。
+- 重启后端后实测：`/api/health` 返回 `demo_mode:false`、`llm_configured:true`；
+  `POST /api/teaching/hint` 返回 HTTP 200、`llm_status:"model"`（耗时约 4.9 秒），
+  确认分层提示已由真实模型生成，而非模板。
+- 新增 `docs/assets/health-check-evidence.md`，记录脱敏后的接口响应与复现命令，供技术文档与演示视频引用。
+- 现场预案不变：API 异常时把 `DEMO_MODE` 设为 `on` 并重启即可回退，检索与引用不受影响。
+
 ---
 
 ## 记录模板（后续每日追加）
