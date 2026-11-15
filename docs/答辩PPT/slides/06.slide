@@ -1,0 +1,42 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>检索结果直接驱动 L1 → L4</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>05 · TEACHING</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 26, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 246, flexDirection: 'row', gap: 16 }}>
+      <Box style={{ width: 278, border: '1px solid #3D7BD9', paddingLeft: 16, paddingRight: 16, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.2 }}>L1</Text>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>知识点提示</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>解释概念并引用原文，不给代码、不给步骤。</Text>
+      </Box>
+      <Box style={{ width: 278, border: '1px solid #3D7BD9', paddingLeft: 16, paddingRight: 16, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.2 }}>L2</Text>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>解题思路</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>给出 4–6 步检查顺序，仍然不给完整实现。</Text>
+      </Box>
+      <Box style={{ width: 278, border: '1px solid #3D7BD9', paddingLeft: 16, paddingRight: 16, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.2 }}>L3</Text>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>局部示例</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>不超过 6 行诊断片段；须先提交自己的思路。</Text>
+      </Box>
+      <Box style={{ width: 278, border: '1px solid #3D7BD9', paddingLeft: 16, paddingRight: 16, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 40, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.2 }}>L4</Text>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>相似例题</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>同知识点换条件，标注「AI 生成示例 · 非教材原文」。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 96, background: '#E8EFF8', paddingLeft: 22, paddingTop: 14, flexDirection: 'column', gap: 8 }}>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>服务端跳级拦截</Text>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.45 }}>按 current_level + 1 钳制 target_level，客户端传 4 也只会拿到 2；引导模式未提交尝试，直接压回 L2 并说明原因。</Text>
+    </Box>
+    <Box style={{ width: 1160, height: 60, borderLeft: '4px solid #1E4FA8', paddingLeft: 22, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 21, color: '#1A2230', lineHeight: 1.4 }}>结论：检索结果不只塞给模型，它同时决定引用编号范围与分层策略。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>06 / 13</Text>
+  </Box>
+</Slide>

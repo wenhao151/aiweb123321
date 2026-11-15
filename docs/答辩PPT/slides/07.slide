@@ -1,0 +1,51 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>大模型只做受约束润色</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>05 · LLM INTEGRATION</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 24, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 368, flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 660, flexDirection: 'column', gap: 12 }}>
+        <Box style={{ width: 660, height: 80, border: '1px solid #D6DCE5', paddingLeft: 18, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <Box style={{ width: 40, height: 40, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>1</Text></Box>
+          <Text style={{ fontSize: 20, color: '#1A2230' }}>输入：命中集合 + 问题分类 + 目标层级 + 可信片段</Text>
+        </Box>
+        <Box style={{ width: 660, height: 80, border: '1px solid #D6DCE5', paddingLeft: 18, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <Box style={{ width: 40, height: 40, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>2</Text></Box>
+          <Text style={{ fontSize: 20, color: '#1A2230' }}>先由模板生成结构化讲解块（L1–L3）</Text>
+        </Box>
+        <Box style={{ width: 660, height: 80, border: '1px solid #D6DCE5', paddingLeft: 18, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <Box style={{ width: 40, height: 40, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>3</Text></Box>
+          <Text style={{ fontSize: 20, color: '#1A2230' }}>模型仅润色这些块，不允许自由回答</Text>
+        </Box>
+        <Box style={{ width: 660, height: 80, border: '1px solid #D6DCE5', paddingLeft: 18, flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <Box style={{ width: 40, height: 40, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 18, color: '#FFFFFF', fontWeight: 'bold' }}>4</Text></Box>
+          <Text style={{ fontSize: 20, color: '#1A2230' }}>输出前重过引用校验与泄露护栏</Text>
+        </Box>
+      </Box>
+      <Box style={{ width: 480, flexDirection: 'column', gap: 16 }}>
+        <Box style={{ width: 480, height: 112, background: '#E8EFF8', paddingLeft: 24, paddingTop: 12, flexDirection: 'column', gap: 4 }}>
+          <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>false</Text>
+          <Text style={{ fontSize: 18, color: '#4A5568' }}>demo_mode：已退出演示模式</Text>
+        </Box>
+        <Box style={{ width: 480, height: 112, background: '#E8EFF8', paddingLeft: 24, paddingTop: 12, flexDirection: 'column', gap: 4 }}>
+          <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>model</Text>
+          <Text style={{ fontSize: 18, color: '#4A5568' }}>llm_status：真实模型生成</Text>
+        </Box>
+        <Box style={{ width: 480, height: 112, background: '#E8EFF8', paddingLeft: 24, paddingTop: 12, flexDirection: 'column', gap: 4 }}>
+          <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>4.86s</Text>
+          <Text style={{ fontSize: 18, color: '#4A5568' }}>真实问答接口耗时（HTTP 200）</Text>
+        </Box>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 68, borderLeft: '4px solid #D9534F', paddingLeft: 22, justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.4 }}>模型超时 / 异常 / 格式不合法时自动回退模板，检索与引用完全不受影响。</Text>
+      <Text style={{ fontSize: 18, color: '#4A5568' }}>现场网络故障可将 DEMO_MODE 设为 on 并重启，一键回退。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>07 / 13</Text>
+  </Box>
+</Slide>

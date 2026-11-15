@@ -1,0 +1,13 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 720, paddingLeft: 90, paddingRight: 90, paddingTop: 190, flexDirection: 'column', alignItems: 'center' }}>
+    <Box style={{ width: 120, height: 5, background: '#1E4FA8', marginBottom: 52 }} />
+    <Text style={{ fontSize: 60, fontWeight: 'bold', color: '#1E4FA8', textAlign: 'center', lineHeight: 1.25 }}>谢谢，请指正</Text>
+    <Text style={{ fontSize: 24, color: '#3D7BD9', textAlign: 'center', marginTop: 28, lineHeight: 1.4 }}>知实 AI（EduRAG）· 拒绝给答案，只给可溯源提示</Text>
+    <Box style={{ width: 860, height: 1, background: '#D6DCE5', marginTop: 64, marginBottom: 30 }} />
+    <Text style={{ fontSize: 18, color: '#4A5568', textAlign: 'center', lineHeight: 1.9 }}>
+      源码仓库：github.com/wenhao151/aiweb123321<br />
+      广东工商职业技术大学 · 计算机学院<br />
+      卢文浩　时森林　张峻炜　　指导老师：梁少萍
+    </Text>
+  </Box>
+</Slide>

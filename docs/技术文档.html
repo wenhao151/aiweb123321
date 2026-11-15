@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>知实 AI（EduRAG）技术文档</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "SimSun", sans-serif;
+    font-size: 10.5pt; line-height: 1.6; color: #1A2230; margin: 0;
+  }
+  h1, h2, h3 { page-break-after: avoid; }
+  h1.ct { font-size: 20pt; color: #1E4FA8; border-bottom: 2px solid #1E4FA8;
+          padding-bottom: 6px; margin: 0 0 14px; }
+  h2 { font-size: 13pt; color: #1E4FA8; margin: 16px 0 6px; }
+  h3 { font-size: 11pt; color: #1A2230; margin: 12px 0 4px; }
+  p { margin: 5px 0; }
+  ul, ol { margin: 5px 0 5px 18px; padding: 0; }
+  li { margin: 3px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.3pt; margin: 8px 0 10px; }
+  th { background: #E8EFF8; color: #1E4FA8; font-weight: bold; text-align: left; }
+  th, td { border: 1px solid #D6DCE5; padding: 5px 7px; vertical-align: top; }
+  tr { page-break-inside: avoid; }
+  pre { background: #F7F9FC; border: 1px solid #D6DCE5; padding: 8px 10px;
+        font-family: Consolas, "Courier New", monospace; font-size: 8.4pt;
+        line-height: 1.45; white-space: pre-wrap; margin: 8px 0; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+  img { max-width: 100%; max-height: 78mm; object-fit: contain;
+        border: 1px solid #D6DCE5; display: block; margin: 8px auto; }
+  .cap { font-size: 8.8pt; color: #6B7688; text-align: center; margin: 0 0 8px; }
+  .note { background: #E8EFF8; border-left: 3px solid #1E4FA8;
+          padding: 7px 11px; font-size: 9.5pt; margin: 9px 0; }
+  .kicker { color: #1E4FA8; font-weight: bold; }
+  .cover { text-align: center; padding-top: 42mm; page-break-after: always; }
+  .cover .bar { width: 60mm; height: 4px; background: #1E4FA8; margin: 0 auto 18mm; }
+  .cover h1 { font-size: 34pt; color: #1E4FA8; margin: 0 0 6mm; letter-spacing: 2px; }
+  .cover .sub { font-size: 18pt; color: #3D7BD9; margin: 0 0 20mm; }
+  .cover .line { font-size: 12pt; margin: 3mm 0; }
+  .cover .team { margin-top: 22mm; font-size: 10.5pt; line-height: 2; color: #4A5568; }
+  .cover .date { margin-top: 16mm; font-size: 10pt; color: #8B97A8; }
+  .toc { page-break-after: always; }
+  .toc h1 { font-size: 22pt; color: #1E4FA8; margin-bottom: 14mm; }
+  .toc ol { font-size: 12pt; line-height: 2.4; margin-left: 12mm; }
+  .chapter { page-break-before: always; }
+  .arch { border: 1px solid #D6DCE5; background: #F7F9FC; padding: 10px; margin: 10px 0; }
+  .arch .row { border: 1px solid #3D7BD9; background: #FFFFFF; padding: 6px 8px;
+               margin: 5px 0; font-size: 9.3pt; }
+  .arch .row b { color: #1E4FA8; }
+  .arch .flow { text-align: center; color: #3D7BD9; font-size: 9pt; margin: 2px 0; }
+  .small { font-size: 9pt; color: #4A5568; }
+  .avoid { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============ 封面 ============ -->
+<div class="cover">
+  <div class="bar"></div>
+  <h1>知实 AI（EduRAG）</h1>
+  <div class="sub">技术文档</div>
+  <div class="line">2026 第九届传智杯 · AI WEB 网页开发挑战赛（团队赛）</div>
+  <div class="line">参赛编号：2107793</div>
+  <div class="team">
+    学校 / 学院：广东工商职业技术大学 · 计算机学院<br>
+    团队成员：卢文浩（2024120322103）、时森林（2024120322101）、张峻炜（2024120322102）<br>
+    指导老师：梁少萍　　联系邮箱：&lt;2833029991@qq.com&gt;
+  </div>
+  <div class="date">2026 年 11 月</div>
+</div>
+
+<!-- ============ 目录 ============ -->
+<div class="toc">
+  <h1>目　录</h1>
+  <ol>
+    <li>项目概述</li>
+    <li>需求分析</li>
+    <li>系统架构设计</li>
+    <li>AI 技术方案</li>
+    <li>核心功能实现</li>
+    <li>测试与部署</li>
+    <li>总结与展望</li>
+    <li>附录</li>
+  </ol>
+  <div class="note" style="margin-top:24mm">
+    本文档按大赛官方要求组织：项目概述、需求分析、系统架构设计、AI 技术方案、核心功能实现、测试与部署、总结与展望七部分，并单列 AI 技术说明（选型理由 / 集成方式 / 优化策略）与技术创新点、应用创新点。全文以当前代码为准，未实现的功能仅列入展望。
+  </div>
+</div>
+
+<!-- ============ 1 项目概述 ============ -->
+<div class="chapter">
+  <h1 class="ct">1　项目概述</h1>
+
+  <h2>1.1 背景与痛点</h2>
+  <p>高校软件工程、Python 程序设计、数据库与 Web 开发等实训课程中，学生遇到报错或概念卡点时，普遍把题目或整段代码交给通用 AI，复制生成的实现提交。由此产生三个问题：</p>
+  <ol>
+    <li><b>学习过程被替代</b>：得到的是答案而不是排查思路，下次遇到同类问题仍不会处理。</li>
+    <li><b>幻觉无法核对</b>：通用模型会生成看似合理但不存在的函数名、参数与「参考资料」，学生没有能力判别。</li>
+    <li><b>脱离课程实际</b>：模型给的解法常超出本课程已讲授的知识范围，与教师指定的教材、实验手册不一致。</li>
+  </ol>
+  <p>现有教学工具要么只做资料检索（没有引导），要么直接接入通用聊天模型（没有约束），缺少一个「既用 AI、又不让 AI 代写作业」的中间形态。</p>
+
+  <h2>1.2 作品定位</h2>
+  <p>知实 AI 是一个<b>面向高校软件工程实训的 RAG 智能答疑知识库</b>：只依据教师上传的课程资料作答，每条结论附可点开核对的引用；资料里没有的内容明确说明「资料不足」，不编造引用；默认不输出可直接提交的完整实现，而是以 L1→L4 四级提示引导学生自己改出来。</p>
+  <table class="avoid">
+    <tr><th style="width:18%">底线</th><th>具体含义</th><th style="width:34%">实现位置</th></tr>
+    <tr><td>有据可查</td><td>每条结论附文档名、页码 / 段落，可展开原文片段与相关度</td><td><code>teaching/engine.py: build_citations</code></td></tr>
+    <tr><td>无据则明说</td><td>命中分数低于阈值或资料不覆盖时，明确告知并停止生成</td><td><code>engine.py</code> 的 <code>min_evidence_score</code> 分支</td></tr>
+    <tr><td>引导优先</td><td>默认不给完整实现，分级解锁，且不能跳级</td><td><code>engine.py: respond</code> 的层级钳制</td></tr>
+    <tr><td>演示模式诚实</td><td>未配模型时检索真实执行、回答由模板生成并显著标注</td><td><code>core/config.py</code>、<code>llm/client.py</code></td></tr>
+  </table>
+
+  <h2>1.3 核心能力一览</h2>
+  <ul>
+    <li><b>课程知识库</b>：PDF / DOCX / TXT / Markdown 上传、解析、分块、Chroma 持久化索引、内容 sha256 去重、删除同步清向量、重建索引、分块预览。</li>
+    <li><b>分层教学引擎</b>：六类问题自动分类（可手动覆盖）、两种教学模式、四级提示、跳级拦截、答案泄露护栏、学生提交反馈。</li>
+    <li><b>截图报错分析</b>：本地 OCR / 视觉模型双通道、识别文字可编辑后重跑、异常字段解析、复用同一套检索与教学链路。</li>
+    <li><b>演示模式与一键复现</b>：无 Key、断网也能完整走通主流程；干净机器 5 步、10 分钟内可复现。</li>
+  </ul>
+
+  <h2>1.4 与通用 AI 问答的差异</h2>
+  <table>
+    <tr><th style="width:18%">维度</th><th style="width:38%">通用 AI 问答</th><th>知实 AI</th></tr>
+    <tr><td>知识来源</td><td>模型参数记忆，来源不可核对</td><td>教师上传的课程资料，引用可展开</td></tr>
+    <tr><td>无依据时</td><td>倾向于生成「合理」的答案</td><td>明确「资料不足」，不伪造引用</td></tr>
+    <tr><td>输出形态</td><td>直接给完整实现</td><td>L1 概念 → L2 思路 → L3 诊断片段 → L4 迁移例题</td></tr>
+    <tr><td>学生参与</td><td>一次提问即结束</td><td>引导模式需先提交自己的尝试才解锁 L3</td></tr>
+    <tr><td>断网 / 无 Key</td><td>不可用</td><td>检索与引用真实执行，模板回答并标注</td></tr>
+    <tr><td>代码安全</td><td>可能执行或建议执行未知代码</td><td>全链路不执行用户代码，无 <code>exec</code> / <code>eval</code> / <code>subprocess</code></td></tr>
+  </table>
+</div>
+
+<!-- ============ 2 需求分析 ============ -->
+<div class="chapter">
+  <h1 class="ct">2　需求分析</h1>
+
+  <h2>2.1 用户角色与典型场景</h2>
+  <table>
+    <tr><th style="width:22%">角色</th><th style="width:40%">诉求</th><th>对应功能</th></tr>
+    <tr><td>学生（主要用户）</td><td>卡住时得到<b>能自己走下去</b>的提示，且知道依据在哪</td><td>分层教学页、报错分析页、引用卡片</td></tr>
+    <tr><td>教师 / 助教</td><td>让答疑口径统一到本课程资料，可自行补充资料</td><td>知识库上传、删除、重建、分块预览</td></tr>
+    <tr><td>评委 / 复现者</td><td>不配密钥、10 分钟内看到完整主流程</td><td>演示模式、一键复现、自检脚本</td></tr>
+  </table>
+  <p>典型场景：学生在实训中遇到 <code>TypeError: can only concatenate str (not "int") to str</code>，把报错截图或文本提交 → 系统 OCR / 解析 → 检索课程资料 → 分类为「编程报错」→ 返回 L1（解释异常类型 + 引用原文，不给代码）→ 学生写思路提交 → 解锁 L2 排查顺序 → 再解锁 L3（≤6 行诊断片段）→ L4 换条件的相似例题。</p>
+
+  <h2>2.2 功能性需求</h2>
+  <table>
+    <tr><th style="width:10%">编号</th><th style="width:52%">需求</th><th>验收方式</th></tr>
+    <tr><td>FR-1</td><td>支持四类课程资料上传、解析并保留页码 / 标题</td><td>上传 DOCX 后在分块预览中看到页码</td></tr>
+    <tr><td>FR-2</td><td>同一内容重复上传不产生重复索引</td><td>sha256 去重测试</td></tr>
+    <tr><td>FR-3</td><td>删除文档时同步清除向量</td><td>删除后检索不再命中</td></tr>
+    <tr><td>FR-4</td><td>检索结果必须携带文档名、位置与相关度</td><td>引用卡片可展开</td></tr>
+    <tr><td>FR-5</td><td>资料不覆盖时明确拒答，不伪造引用</td><td>提问知识库外的问题</td></tr>
+    <tr><td>FR-6</td><td>分级提示不能跳级，引导模式下未提交尝试不得进入 L3</td><td>传 <code>target_level=4</code> 时服务端压回 2</td></tr>
+    <tr><td>FR-7</td><td>不输出可直接抄交的完整实现</td><td>护栏测试：代码块截断 / 骨架替换</td></tr>
+    <tr><td>FR-8</td><td>报错截图识别结果可人工修正并重跑</td><td>「用修正后的内容重新分析」</td></tr>
+    <tr><td>FR-9</td><td>无大模型密钥时主流程完整可用且标注演示模式</td><td><code>DEMO_MODE=auto</code> 无 Key 启动</td></tr>
+  </table>
+
+  <h2>2.3 非功能性需求</h2>
+  <ul>
+    <li><b>离线可用</b>：检索与 OCR 的本地通道不依赖外网、GPU 或 Embedding API。</li>
+    <li><b>可复现</b>：干净机器 5 步、≤10 分钟；<code>storage/</code> 不入库，但 <code>seed_demo.py</code> 可一键导入演示资料。</li>
+    <li><b>安全</b>：密钥只存后端环境变量；前端拿不到；健康检查只回布尔值；不执行用户代码；前端富文本经 DOMPurify 处理。</li>
+    <li><b>诚实可解释</b>：模板或模型生成的内容都有明确标记；OCR 行号始终标注「识别，可能不准」；L4 例题标注「AI 生成示例 · 非教材原文」。</li>
+    <li><b>可维护</b>：后端按领域分模块，接口契约用 Pydantic 模型约束，OpenAPI 文档自动生成。</li>
+  </ul>
+
+  <h2>2.4 明确的边界（不做的事）</h2>
+  <p>本项目不做：登录与多租户、教师端学情看板、自动评分、执行或运行学生代码、直接给出完整作业实现、联网抓取资料。这些边界既是教学伦理选择，也让系统保持轻量、可离线复现。官方要求「后端仅作 AI 能力接入层」，因此未引入账户体系等重型业务模块。</p>
+</div>
+
+<!-- ============ 3 系统架构设计 ============ -->
+<div class="chapter">
+  <h1 class="ct">3　系统架构设计</h1>
+
+  <h2>3.1 总体架构</h2>
+  <div class="arch avoid">
+    <div class="row"><b>浏览器层</b>　Vue 3 + Vite + TypeScript：首页 HomeView、分层教学 TeachingView、知识库 LibraryView、报错分析 ErrorView；axios 经 Vite 代理访问 <code>/api</code></div>
+    <div class="flow">▼ HTTP / JSON</div>
+    <div class="row"><b>接口层</b>　FastAPI <code>app/main.py</code> + <code>app/api/*</code>：<code>/api/health</code>、<code>/api/teaching/*</code>、<code>/api/library/*</code>、<code>/api/errors/*</code>；CORS 与 OpenAPI</div>
+    <div class="flow">▼</div>
+    <div class="row"><b>应用层</b>　检索层 <code>retrieval/</code>（组合检索、回落、去重）｜教学引擎 <code>teaching/</code>（分类、分层、护栏、引用）｜报错分析 <code>errors/</code>（OCR、解析、分析，复用检索与教学链路）</div>
+    <div class="flow">▼</div>
+    <div class="row"><b>支撑层</b>　<code>library/</code>（解析·分块·哈希向量·Chroma 索引·登记表）、<code>llm/</code>（OpenAI 兼容客户端·提示词）、<code>knowledge/</code>（通用知识兜底）、<code>models/</code>（Pydantic 契约）、<code>core/</code>（配置与环境变量）</div>
+  </div>
+  <p class="small">核心数据流：<b>提问 → 检索 → 六类分类 → 层级钳制 → 引用绑定 → 生成 / 润色 → 输出侧护栏 → 响应</b>。报错分析与资料入库分别复用同一套检索与分层策略。</p>
+
+  <h2>3.2 分层与模块职责</h2>
+  <table>
+    <tr><th style="width:16%">层</th><th style="width:24%">目录</th><th style="width:32%">职责</th><th>关键文件</th></tr>
+    <tr><td>接口层</td><td><code>app/api/</code></td><td>HTTP 路由、参数校验、错误码</td><td><code>health.py</code> 等 4 个</td></tr>
+    <tr><td>应用层</td><td><code>app/teaching/</code>、<code>app/errors/</code></td><td>教学策略、护栏、OCR 与分析</td><td><code>engine.py</code>、<code>guards.py</code>、<code>ocr.py</code></td></tr>
+    <tr><td>检索层</td><td><code>app/retrieval/</code></td><td>组合检索、回落与去重</td><td><code>service.py</code>、<code>keyword.py</code></td></tr>
+    <tr><td>知识库层</td><td><code>app/library/</code></td><td>解析、分块、向量化、索引、登记表</td><td><code>parsers.py</code>、<code>chunker.py</code>、<code>embeddings.py</code>、<code>index.py</code>、<code>store.py</code></td></tr>
+    <tr><td>模型层</td><td><code>app/llm/</code></td><td>OpenAI 兼容调用、提示词模板</td><td><code>client.py</code>、<code>prompts.py</code></td></tr>
+    <tr><td>契约与配置</td><td><code>app/models/</code>、<code>app/core/</code></td><td>Pydantic 模型、环境变量</td><td><code>schemas.py</code>、<code>config.py</code></td></tr>
+    <tr><td>前端</td><td><code>frontend/src/</code></td><td>4 个页面、API 客户端、教学组件</td><td><code>views/</code>、<code>api/</code>、<code>components/teaching/</code></td></tr>
+  </table>
+  <p>各层之间通过 Pydantic 模型传递数据；教学引擎<b>不自己检索</b>，检索结果由调用方显式传入（<code>TeachingRequest.retrieval</code>），因此检索通道可替换、可单测。</p>
+
+  <h2>3.3 核心数据流</h2>
+  <ul>
+    <li><b>问答链路</b>：前端提交问题 → <code>/api/teaching/hint</code> 若未带检索结果则由 <code>CompositeRetriever</code> 补齐 → <code>classify</code> 六类分类 → <code>respond</code> 计算目标层级并钳制 → <code>build_citations</code> 依据命中集合生成引用 → 组装分层内容块 → 有模型则润色 L1–L3 → <code>guard_blocks</code> 输出侧护栏 → 返回 <code>TeachingResponse</code>（含 <code>llm_status</code>）。</li>
+    <li><b>报错分析链路</b>：上传截图 → 图片校验与缩放 → OCR 通道识别（本地 rapidocr / 视觉模型 / auto）→ 用户可修正识别文字 → <code>parser</code> 解析异常类型、文件路径、行号 → 复用检索与教学引擎 → 返回可能原因、排查步骤、引用卡片。</li>
+    <li><b>资料入库链路</b>：上传 → 格式与大小校验 → 解析器提取带页码 / 标题的 <code>Block</code> → <code>chunker</code> 按段落聚合 → <code>embeddings</code> 生成哈希向量 → <code>index</code> 写入 Chroma → <code>store</code> 更新登记表。</li>
+  </ul>
+
+  <h2>3.4 接口设计</h2>
+  <table>
+    <tr><th style="width:12%">方法</th><th style="width:48%">路径</th><th>用途</th></tr>
+    <tr><td>GET</td><td><code>/api/health</code></td><td>服务状态、运行模式、知识库文档 / 片段数</td></tr>
+    <tr><td>GET</td><td><code>/api/teaching/categories</code>、<code>/levels</code>、<code>/modes</code></td><td>六类问题、四级提示、两种模式定义</td></tr>
+    <tr><td>POST</td><td><code>/api/teaching/classify</code>、<code>/hint</code>、<code>/feedback</code></td><td>分类、获取分层提示（核心接口）、提交反馈</td></tr>
+    <tr><td>GET</td><td><code>/api/library/stats</code>、<code>/documents</code></td><td>统计与文档列表</td></tr>
+    <tr><td>POST</td><td><code>/api/library/documents</code>、<code>/{id}/reindex</code></td><td>上传解析、重建索引</td></tr>
+    <tr><td>GET</td><td><code>/api/library/documents/{id}/chunks</code></td><td>分块预览</td></tr>
+    <tr><td>GET</td><td><code>/api/errors/capabilities</code>、<code>/sample-image</code></td><td>OCR 能力、演示截图</td></tr>
+    <tr><td>POST</td><td><code>/api/errors/analyze-text</code>、<code>/analyze-image</code></td><td>文本 / 截图报错分析</td></tr>
+  </table>
+  <p>全部接口自动生成 OpenAPI 文档（<code>/api/docs</code>）。核心请求 <code>TeachingRequest</code> 含 <code>question</code>、<code>mode</code>、<code>category</code>、<code>current_level</code>、<code>target_level</code>、<code>min_evidence_score</code>、<code>retrieval</code>、<code>submission</code> 等字段；服务端对 <code>target_level</code> 做 <code>current_level + 1</code> 钳制，客户端传 4 也只会拿到 2。</p>
+
+  <h2>3.5 数据模型要点</h2>
+  <p><code>RetrievedChunk</code> 统一了两套检索的返回结构（文本、文档名、页码 / 段落、相关度、块 ID），使教学引擎与报错分析无需感知检索来源；缺失元数据保持 <code>None</code>，界面如实显示「未标注」而不是编造。引用 <code>Citation</code> 由 <code>build_citations</code> 依据<b>本次命中集合</b>生成，因此引用编号不可能指向未检索到的文档。</p>
+</div>
+
+<!-- ============ 4 AI 技术方案 ============ -->
+<div class="chapter">
+  <h1 class="ct">4　AI 技术方案</h1>
+  <div class="note">本章对应官方「AI 技术说明须重点阐述选型理由、集成方式、优化策略」的要求，是全文重点章节。</div>
+
+  <h2>4.1 技术选型与理由</h2>
+  <table>
+    <tr><th style="width:15%">技术点</th><th style="width:23%">选择</th><th style="width:36%">选型理由</th><th>放弃的方案及原因</th></tr>
+    <tr><td>RAG 框架</td><td><b>自建链路</b>（约 200 行核心逻辑）</td><td>需要精确控制「引用必须来自本次命中集合」「检索结果驱动分层策略」，框架封装会掩盖这些约束；便于教学展示与单元测试</td><td>LangChain 等：抽象层厚，定制护栏与引用绑定更绕</td></tr>
+    <tr><td>向量化</td><td><b>离线哈希向量</b></td><td>现场可能没有 Embedding API、没有 GPU；交付首要目标是稳定可演示。字符 2/3-gram + 英文单词经 crc32 散列到 512 维、L2 归一化，配合字面覆盖率覆盖课程资料问答</td><td>语义 Embedding：需外网 / API / 本地模型，离线演示有风险</td></tr>
+    <tr><td>向量库</td><td><b>Chroma 持久化</b></td><td>嵌入式、无需独立服务，<code>storage/chroma</code> 直接落盘；集合 <code>library_chunks_v1</code>，<code>hnsw:space=cosine</code></td><td>Qdrant：需额外服务进程，违背 10 分钟复现</td></tr>
+    <tr><td>排序</td><td><b>0.75 余弦 + 0.25 字面覆盖率</b></td><td>纯词面哈希对中文近义表达不敏感，加字面覆盖率可稳定命中关键词型报错；两路分数可直接解释</td><td>纯向量排序：短查询与专业术语容易漂移</td></tr>
+    <tr><td>大模型接入</td><td><b>OpenAI 兼容 /chat/completions</b></td><td>只用 <code>messages / temperature / max_tokens</code> 最小公共子集，换供应商只改三个环境变量；不依赖 function calling</td><td>厂商私有 SDK：锁定供应商、增加依赖</td></tr>
+    <tr><td>前端</td><td>Vue 3 + Vite + TypeScript</td><td>类型安全、构建快、组件化适合四级阶梯与引用卡片</td><td>—</td></tr>
+  </table>
+  <div class="note"><b>诚实说明</b>：哈希向量是<b>词面相似度，不是语义向量</b>，不具备同义 / 泛化能力。答辩中主动说明，并定位为「离线可复现优先」的工程取舍，不宣称达到语义检索效果。</div>
+
+  <h2>4.2 RAG 链路实现</h2>
+  <ul>
+    <li><b>分块</b>：<code>chunker.py</code> 按段落聚合，目标 500 字、重叠 80 字、上限 800 字，句子边界与代码块不被硬切，保留 <code>page</code> / <code>heading</code> / <code>ordinal</code>，因此引用能定位到真实页码与标题。</li>
+    <li><b>向量化</b>：<code>embeddings.py</code> 的 <code>embed_text</code> 提取英文单词与中文连续串的 2/3-gram，用 <code>zlib.crc32</code> 散列到 512 维桶并累加，最后 L2 归一化；<code>lexical_coverage</code> 计算查询特征在文本中的覆盖率。全过程纯 CPU、零网络请求。</li>
+    <li><b>索引</b>：<code>index.py</code> 使用 Chroma 持久化集合，<code>upsert</code> 写入块 ID、向量、文档元数据；删除按 <code>doc_id</code> 精确清除；<code>search</code> 取回 <code>distances</code> 换算余弦后按 <code>0.75 × cosine + 0.25 × lexical</code> 打分，低于 <code>min_score</code> 丢弃。</li>
+    <li><b>组合检索与回落</b>：<code>CompositeRetriever.search</code> 先查知识库，命中不足 <code>top_k</code> 时用内置示例资料的 <code>KeywordRetriever</code>（IDF 加权词面匹配）补足，再按分数降序、以 <code>(doc_name, text[:60])</code> 去重后截断。</li>
+    <li><b>引用绑定</b>：<code>build_citations</code> 只从本次 <code>retrieval</code> 列表生成引用，配合 <code>min_evidence_score</code> 阈值；片段未真正覆盖问题时会补一段明确标注「通用 Python 知识（非课程资料）」的诊断，既不伪造引用，也不简单拒答。</li>
+  </ul>
+
+  <h2>4.3 大模型集成方式</h2>
+  <p><code>llm/client.py</code> 的 <code>LLMClient</code> 通过 <code>httpx</code> 调用 <code>{LLM_BASE_URL}/chat/completions</code>，请求体包含 <code>model</code>、<code>messages</code>、<code>temperature</code>（默认 0.3）、<code>max_tokens</code>（默认 1200）、<code>stream: False</code>，带超时与重试；<code>available</code> 由 <code>llm_api_key / llm_base_url / llm_model</code> 三者是否齐备决定。</p>
+  <p><b>集成点</b>：<code>teaching/engine.py</code> 在 L1–L3 生成后，若模型可用则调用 <code>compose_hint</code>，把「问题、分类、层级、可信检索片段、当前讲解块」一起送入模型做<b>受约束的润色</b>，而不是让模型自由回答；模型输出要重新经过引用校验与 <code>guard_blocks</code> 才能返回。响应中的 <code>llm_status</code> 取值为 <code>template</code>（未配模型）、<code>model</code>（模型成功）、<code>fallback</code>（模型失败回退模板），前端据此显示状态。</p>
+  <p><b>降级设计</b>：模型超时、返回异常、格式不合法时自动回退到模板讲解，检索与引用完全不受影响；<code>DEMO_MODE=on</code> 可强制演示模式，<code>auto</code> 则在无 Key 时自动进入。现场网络故障可一键回退。</p>
+  <div class="note avoid"><b>实测接入证据</b>（2026-11-15）：配置真实密钥并重启后端后，<code>/api/health</code> 返回 <code>demo_mode:false</code>、<code>llm_configured:true</code>；<code>POST /api/teaching/hint</code> 返回 HTTP 200、耗时 4.86 秒、<code>llm_status:"model"</code>，确认分层提示由真实模型生成。证据记录见 <code>docs/assets/health-check-evidence.md</code>。</div>
+  <p><b>当前明确未做的</b>：<code>stream: False</code>，全项目无 SSE 流式输出；无 Agent / 工具调用 / Function Calling；无独立 RAG 对话页。这些属于后续规划，不在当前实现中。</p>
+
+  <h2>4.4 提示词工程与分层教学策略</h2>
+  <p>系统把「教学策略」编码成结构化的内容块，而不是一句自由 Prompt：</p>
+  <ul>
+    <li><b>六类问题</b>：概念理解、编程报错、实验步骤、数据库与 SQL、Web 开发、作业思路；分类结果带置信度且允许用户手动覆盖。</li>
+    <li><b>两种模式</b>：学习模式（study）与引导模式（guided）。引导模式下，进入 L3 前必须先提交自己的思路或代码片段，否则服务端把请求压回 L2 并说明原因（<code>guided_requires_attempt</code>）。</li>
+    <li><b>四级提示</b>：L1 知识点提示（解释概念 + 引用原文，不给代码与步骤）→ L2 解题思路（4–6 步检查顺序）→ L3 局部示例（≤6 行诊断片段）→ L4 相似例题（同知识点、换条件，标注「AI 生成示例 · 非教材原文」）。</li>
+    <li><b>跳级拦截</b>：服务端按 <code>current_level + 1</code> 钳制 <code>target_level</code>，<code>clamped</code> 与 <code>clamp_reason</code> 随响应返回，前端无法绕过。</li>
+  </ul>
+  <p>关键设计是<b>检索结果直接驱动分层策略</b>：L1 只引用原文，L2 组织方法，L3 给诊断片段，L4 做迁移，检索命中集合同时决定引用编号的合法范围。这使 AI 功能不是附加在页面上的聊天框，而是贯穿答疑主流程的核心逻辑。</p>
+
+  <h2>4.5 AI 安全与可控</h2>
+  <table>
+    <tr><th style="width:26%">风险</th><th style="width:48%">措施</th><th>位置</th></tr>
+    <tr><td>模型编造引用</td><td>引用只能来自本次命中集合；低于阈值走拒答</td><td><code>build_citations</code></td></tr>
+    <tr><td>直接给可抄的完整答案</td><td>代码块 &gt;6 行截断、完整函数体替换为骨架、索要完整实现的话术自动收敛</td><td><code>guards.py</code></td></tr>
+    <tr><td>学生提交恶意代码</td><td>只做文本分析，全模块无 <code>exec</code> / <code>eval</code> / <code>subprocess</code></td><td>全后端</td></tr>
+    <tr><td>密钥泄露</td><td>只放后端环境变量；健康检查只回布尔值；<code>.gitignore</code> 排除 <code>.env</code></td><td><code>core/config.py</code></td></tr>
+    <tr><td>前端 XSS</td><td>富文本渲染经 DOMPurify 清洗</td><td>前端</td></tr>
+    <tr><td>OCR 猜测被当成事实</td><td>识别文字可编辑、行号标注「识别，可能不准」</td><td><code>errors/</code></td></tr>
+    <tr><td>模板 / 生成内容冒充</td><td>L4 标注 AI 生成；通用知识标注「非课程资料」；演示模式顶部横幅</td><td><code>templates.py</code></td></tr>
+  </table>
+
+  <h2>4.6 优化策略与权衡</h2>
+  <ol>
+    <li><b>混合打分</b>：向量余弦与字面覆盖率互补，缓解纯哈希向量对中文近义表达的不足，且分数可解释、便于调参。</li>
+    <li><b>回落与去重</b>：知识库命中不足才启用示例资料词面检索；<code>(doc_name, text[:60])</code> 去重避免同一片段重复占满 <code>top_k</code>。</li>
+    <li><b>缓存</b>：<code>get_retriever()</code> 用 <code>lru_cache(maxsize=1)</code> 复用检索器；Chroma 客户端用锁 + 字典缓存，避免重复创建连接。</li>
+    <li><b>失败隔离</b>：知识库检索抛异常时返回空列表而非 500，再由回落通道兜底；模型失败回退模板，主流程不中断。</li>
+    <li><b>可复现优先</b>：<code>storage/</code> 不入库，但 <code>seed_demo.py</code> 直接写本地索引、无需先启动服务；<code>check_demo.py</code> 不依赖 HTTP 服务即可自检。</li>
+    <li><b>取舍说明</b>：为保证离线与可复现，牺牲了语义召回率；前端主 chunk 1.11 MB（gzip 约 369 KB）尚未做代码分割，属已知性能债，已列入后续规划。</li>
+  </ol>
+
+  <h2>4.7 演示模式与参数口径</h2>
+  <p>未配置 <code>LLM_API_KEY</code> 时，<code>DEMO_MODE=auto</code> 自动进入演示模式：检索、引用、分类、层级、护栏<b>全部真实执行</b>，只有讲解文字由模板生成，界面顶部明确标注「演示模式」，响应 <code>llm_status=template</code>。断网、无 Key 也能完整走通主流程，评委 clone 下来无需任何环境变量即可打开页面。这一设计同时满足「10 分钟极速复现」与「不把模板输出伪装成模型输出」。</p>
+  <div class="note"><b>参数口径说明</b>：<code>/api/health</code> 回显的 <code>embed_dim: 1024</code> 是 <code>config.py</code> 中为将来接入语义 Embedding 预留的配置默认值；当前离线哈希向量由 <code>embeddings.py</code> 固定为 <b>512 维</b>（<code>EMBED_VERSION = hash-char-ngram-v1</code>）。健康检查回显的是配置，不是实际向量维度，两者不冲突。</div>
+</div>
+
+<!-- ============ 5 核心功能实现 ============ -->
+<div class="chapter">
+  <h1 class="ct">5　核心功能实现</h1>
+
+  <h2>5.1 课程知识库（app/library/）</h2>
+  <p>支持 PDF（PyMuPDF，保留页码）、DOCX（python-docx，保留标题层级）、TXT、Markdown；单文件上限可配（默认 20 MB）。解析失败如实上报具体原因（扫描版 PDF、空文件、编码异常），不做静默跳过。按内容 sha256 去重，删除文档时调用 <code>collection.delete(where={"doc_id": ...})</code> 同步清向量，避免「删了还能检索到」。提供重建索引与分块预览，教师可核对实际切出来的片段与页码。首页与 <code>/api/health</code> 的文档 / 片段数来自真实登记表，未导入时如实返回 <code>not_initialized</code>。</p>
+  <img src="assets/library.png" alt="知识库页面">
+  <p class="cap">图 5-1　课程知识库：文档列表、索引状态与片段数</p>
+
+  <h2>5.2 分层教学（app/teaching/ + TeachingView.vue）</h2>
+  <p>页面提供「载入演示问题」「开始引导」「继续提示」「我的思路」「获取反馈」「换一种解释」「L4 相似例题」等交互，右侧展示分类置信度与可手动调整的分类，下方是可展开的引用卡片。四种状态（初始 / 加载 / 回答 / 错误）都有明确反馈；层级阶梯直观展示当前所处位置与被钳制的原因。</p>
+  <img src="assets/teaching-l1.png" alt="分层教学页面">
+  <p class="cap">图 5-2　L1 知识点提示与可展开的引用卡片</p>
+
+  <h2>5.3 截图报错分析（app/errors/ + ErrorView.vue）</h2>
+  <p><code>ocr.py</code> 提供三种通道：<code>auto</code>（配了视觉模型就用，否则本地 rapidocr）、<code>vision</code>（OpenAI 兼容视觉模型）、<code>rapidocr</code>（本地 ONNX 离线可用）；<code>/api/errors/capabilities</code> 如实返回当前可用通道。识别结果可编辑，改完重新走一次完整分析链路。<code>parser.py</code> 抽取异常类型、文件、行号、关键语句，<code>analyzer.py</code> 复用检索与教学引擎给出可能原因、排查步骤与引用。</p>
+  <img src="assets/errors-demo.png" alt="报错分析页面">
+  <p class="cap">图 5-3　截图报错识别结果、可能原因与引用卡片</p>
+
+  <h2>5.4 前端交互与状态</h2>
+  <p>4 个页面：首页（连接状态、知识库概况、演示模式横幅）、分层教学、知识库、报错分析。API 层使用 axios 统一封装，<code>TeachingResponse</code> 等类型与后端 Pydantic 契约对应。Vite 开发服务器把 <code>/api</code> 代理到后端，无需额外跨域配置；生产构建 <code>npm run build</code> 含 <code>vue-tsc --noEmit</code> 类型检查。</p>
+
+  <h2>5.5 关键代码走查</h2>
+  <pre>
+# retrieval/service.py —— 组合检索、回落与去重
+hits = self.library.search(query, top_k=top_k, min_score=min_score)
+if len(hits) &lt; top_k:
+    hits.extend(self.keyword.search(query, top_k=top_k - len(hits), category=category))
+for hit in sorted(hits, key=lambda item: item.score, reverse=True):
+    ...去重后 merged[:top_k]
+
+# library/index.py —— 混合打分
+score = round(VECTOR_WEIGHT * cosine + LEXICAL_WEIGHT * lexical, 4)   # 0.75 / 0.25
+
+# teaching/engine.py —— 层级钳制与模型润色
+if clamped: ... clamp_reason = "max_one_level_per_step" / "guided_requires_attempt"
+if self.llm.available and level in (1, 2, 3):
+    text = self.llm.compose_hint(...)
+    llm_status = "model" if self._apply_llm(blocks, level, text) else "fallback"</pre>
+</div>
+
+<!-- ============ 6 测试与部署 ============ -->
+<div class="chapter">
+  <h1 class="ct">6　测试与部署</h1>
+
+  <h2>6.1 测试体系</h2>
+  <p>后端 <code>pytest</code> 实测 <b>124 passed</b>，覆盖 14 个测试文件：分块、分类、配置、报错 API / OCR / 解析、通用知识兜底、护栏、健康检查、知识库、模型客户端、关键词检索、教学 API、层级约束。前端 <code>npm run build</code> 含 <code>vue-tsc --noEmit</code> 类型检查通过（1777 modules）。</p>
+  <p>重点用例类型：跳级拦截（传 <code>target_level=4</code> 只得到 L2）、泄露护栏（完整函数体被收敛）、无据拒答（不伪造引用）、删除同步清向量、OCR 降级通道、模型失败回退模板。</p>
+
+  <h2>6.2 演示自检</h2>
+  <p><code>scripts/check_demo.py</code> 直接调用内部模块（不依赖 HTTP 服务），按 6 个标准问题核对检索与回答，实测 <b>6/6 通过</b>。该脚本会自行补齐示例资料，可单独运行。</p>
+
+  <h2>6.3 一键复现（目标 ≤10 分钟）</h2>
+  <pre>
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+Push-Location frontend; npm install; Pop-Location
+Copy-Item .env.example .env
+.\.venv\Scripts\python.exe scripts\seed_demo.py     # 必做：storage/ 不入库
+.\scripts\dev.ps1                                   # 启动 :8000 与 :5173
+.\.venv\Scripts\python.exe scripts\check_demo.py   # 应输出「通过 6/6」</pre>
+  <p>验证点：<code>/api/health</code> 返回 <code>status=ok</code>；首页显示 4 篇文档 / 15 片段 / 就绪；<code>/api/docs</code> 可访问。</p>
+
+  <h2>6.4 环境配置与密钥安全</h2>
+  <table>
+    <tr><th style="width:34%">变量</th><th style="width:42%">作用</th><th>模板中的值</th></tr>
+    <tr><td><code>LLM_BASE_URL</code></td><td>OpenAI 兼容服务地址</td><td><code>https://api.deepseek.com/v1</code></td></tr>
+    <tr><td><code>LLM_API_KEY</code></td><td>大模型密钥</td><td><b>留空</b></td></tr>
+    <tr><td><code>LLM_MODEL</code></td><td>模型名</td><td><code>deepseek-chat</code></td></tr>
+    <tr><td><code>LLM_TEMPERATURE / MAX_TOKENS / TIMEOUT</code></td><td>生成参数</td><td>0.3 / 1200 / 60</td></tr>
+    <tr><td><code>DEMO_MODE</code></td><td><code>auto</code> / <code>on</code> / <code>off</code></td><td><code>auto</code></td></tr>
+    <tr><td><code>EMBED_* / VLM_*</code></td><td>语义向量 / 视觉模型（可选）</td><td>留空</td></tr>
+  </table>
+  <p>密钥通过 <code>.env</code> 或系统环境变量注入，由 <code>pydantic-settings</code> 读取；系统环境变量优先级高于 <code>.env</code>。仓库只提交 <code>.env.example</code>（所有密钥项留空），<code>.gitignore</code> 实测排除 <code>.env</code>、<code>.env.*</code>、<code>*.log</code>、<code>.venv/</code>、<code>node_modules/</code>、<code>dist/</code>、<code>storage/</code>。视频与技术文档截图同样不得出现密钥、请求头或 <code>.env</code> 编辑器画面。</p>
+
+  <h2>6.5 故障预案</h2>
+  <table>
+    <tr><th style="width:40%">现象</th><th>处理</th></tr>
+    <tr><td>现场 API 超时 / 欠费</td><td><code>.env</code> 设 <code>DEMO_MODE=on</code> 后重启，检索与引用不受影响</td></tr>
+    <tr><td>首页显示 0 篇文档</td><td>执行 <code>seed_demo.py</code> 导入演示资料</td></tr>
+    <tr><td>索引异常</td><td>知识库页「重建索引」，或删除 <code>storage/chroma</code> 后重新 seed</td></tr>
+    <tr><td>端口占用</td><td>结束占用 8000 / 5173 的进程后重启</td></tr>
+    <tr><td>前端构建告警</td><td>主 chunk 超过 500 KB，属已知项，不影响运行（后续做 <code>manualChunks</code> 拆包）</td></tr>
+  </table>
+
+  <h2>6.6 交付形态</h2>
+  <p>本地开发：后端 <code>uvicorn app.main:app --port 8000</code>，前端 <code>npm run dev -- --host 127.0.0.1 --port 5173</code>。源码托管于 Public 仓库，保留按模块拆分的真实 Git 提交历史与 <code>docs/devlog.md</code> 开发日志。在线演示地址为可选加分项，当前版本以本地一键复现为主要交付形态。</p>
+</div>
+
+<!-- ============ 7 总结与展望 ============ -->
+<div class="chapter">
+  <h1 class="ct">7　总结与展望</h1>
+
+  <h2>7.1 技术创新点</h2>
+  <ol>
+    <li><b>检索驱动的四级引导式生成</b>：把 RAG 命中集合同时用于引用绑定与分层策略决策，L1–L4 的内容形态由检索结果约束，而非单一 Prompt 自由生成；配合服务端跳级钳制与「先提交尝试再解锁」机制，形成可验证的教学闭环。</li>
+    <li><b>输出侧答案泄露护栏</b>：对生成内容做代码块长度截断、完整函数体骨架化、索要完整实现的话术收敛，把「不代写作业」从产品口号落实为可测试的服务端约束。</li>
+    <li><b>离线可复现的轻量 RAG</b>：自建链路 + 512 维哈希向量 + 0.75/0.25 混合打分 + Chroma 嵌入式持久化，无需 GPU、外网或独立向量服务；演示模式下检索真实、回答模板化并显著标注。</li>
+    <li><b>可解释的诚实设计</b>：引用只能来自本次命中集合、无据拒答、OCR 不确定性标注、AI 生成示例标记、<code>llm_status</code> 状态回传，使每一条输出的来源都可核对。</li>
+  </ol>
+
+  <h2>7.2 应用创新点</h2>
+  <ol>
+    <li><b>反「代写作业」的交互模式</b>：以「拒绝给答案、只给可溯源提示」为产品定位，回应高校实训中 AI 滥用导致的学习过程缺失。</li>
+    <li><b>截图报错与教学链路复用</b>：OCR 结果可人工修正后重跑，识别不确定性显式标注，把多模态入口接入同一套检索与分层策略。</li>
+    <li><b>教师可维护的课程资料闭环</b>：上传、失败可见、分块预览、去重、删除清向量、重建索引，让答疑口径始终锚定本课程资料。</li>
+  </ol>
+
+  <h2>7.3 社会价值</h2>
+  <p>作品把 AI 用于「促进理解」而非「替代完成」，有助于降低实训课程的答疑重复劳动，同时保护学习过程；离线可跑、无 Key 可复现降低了院校部署门槛；对幻觉、引用、密钥、代码执行的处理体现负责任 AI 的实践。演示模式中「检索真实、生成标注」的做法，也为教学场景里如何如实说明 AI 能力边界提供了一个可复用的范例。</p>
+
+  <h2>7.4 局限与后续规划</h2>
+  <table>
+    <tr><th style="width:48%">局限（当前实现）</th><th>后续规划</th></tr>
+    <tr><td>哈希向量为词面相似度，无语义泛化能力</td><td>可选接入语义 Embedding，保留离线通道作降级</td></tr>
+    <tr><td>仅 4 份自制示例资料 / 15 片段</td><td>扩充真实课程语料，建立评测集</td></tr>
+    <tr><td><code>stream: False</code>，无 SSE 流式与独立聊天页</td><td>补流式渲染与 RAG 对话主界面</td></tr>
+    <tr><td>无 Agent / 工具调用 / Function Calling</td><td>让引擎按问题类型自主选择检索、报错指纹、排查清单等工具并可视化轨迹</td></tr>
+    <tr><td>无评测指标看板</td><td>扩展 <code>check_demo.py</code> 为 Recall、引用覆盖率、泄露率等可量化指标</td></tr>
+    <tr><td>前端主 chunk 1.11 MB，未做代码分割</td><td><code>manualChunks</code> 拆包</td></tr>
+    <tr><td>无公网在线演示地址</td><td>部署在线 Demo，作为可选加分项</td></tr>
+  </table>
+  <div class="note">以上规划项<b>均不在当前代码中</b>，仅作为展望；Qdrant、JWT、教师端、评测看板属于早期备选方案，与最终实现不一致，不作为本作品已交付功能。</div>
+</div>
+
+<!-- ============ 附录 ============ -->
+<div class="chapter">
+  <h1 class="ct">附录</h1>
+  <p><b>A. 接口清单</b>：见 3.4，完整契约见运行后的 <code>/api/docs</code>。</p>
+  <p><b>B. 目录结构</b></p>
+  <pre>
+backend/app/     api  core  errors  knowledge  library  llm  models  retrieval  teaching
+backend/tests/   14 个测试文件
+frontend/src/    views  api  components/teaching  router  types
+scripts/         dev.ps1  seed_demo.py  check_demo.py
+docs/            设计文档、开发日志、技术文档大纲、视频分镜、验证证据
+storage/         chroma（索引，不入库）、library（登记表，不入库）</pre>
+  <p><b>C. 一键复现命令卡</b>：见 6.3。</p>
+  <p><b>D. 环境变量表</b>：见 6.4，模板文件 <code>.env.example</code>。</p>
+  <p><b>E. 参考资料</b>：项目 README、<code>docs/04-分层教学引擎.md</code>、<code>docs/05-截图报错分析.md</code>、<code>TROUBLESHOOTING.md</code>、<code>DEMO_SCRIPT.md</code>、各依赖官方文档。</p>
+  <p><b>F. 模型接入验证证据</b>：<code>docs/assets/health-check-evidence.md</code>（脱敏后的健康检查响应、真实问答指标与复现命令）。</p>
+</div>
+
+</body>
+</html>

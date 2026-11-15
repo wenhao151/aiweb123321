@@ -1,0 +1,32 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>两处最能体现负责任 AI 的演示</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>07 · DEMO</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 26, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 370, flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 700, border: '1px solid #3D7BD9', paddingLeft: 26, paddingRight: 26, paddingTop: 22, flexDirection: 'column', gap: 16 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>演示一：问一个知识库里没有的问题</Text>
+        <Box style={{ width: 648, background: '#F7F9FC', paddingLeft: 18, paddingRight: 18, paddingTop: 14, paddingBottom: 14, flexDirection: 'column', gap: 8 }}>
+          <Text style={{ fontSize: 18, color: '#4A5568' }}>提问：「量子计算机会取代经典计算机吗？」</Text>
+          <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.45 }}>系统检索命中不足 → 明确回答「资料不足，课程资料中没有相关依据」。</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.55 }}>不编造引用、不生成「看起来合理」的答案；低于证据阈值就走拒答分支，停止生成。</Text>
+        <Text style={{ fontSize: 18, color: '#D9534F', lineHeight: 1.45 }}>这一条对应「无据则明说」，是通用聊天模型最难做到的克制。</Text>
+      </Box>
+      <Box style={{ width: 440, background: '#E8EFF8', paddingLeft: 24, paddingRight: 24, paddingTop: 22, flexDirection: 'column', gap: 14 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>演示二：点开任意引用卡片</Text>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.6 }}>文档名<br />页码 / 段落位置<br />原文片段<br />相关度分数</Text>
+        <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.5 }}>引用编号只从本次命中集合生成，因此不可能指向未检索到的文档。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 60, borderLeft: '4px solid #1E4FA8', paddingLeft: 22, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 21, color: '#1A2230', lineHeight: 1.4 }}>结论：每一条输出的来源都可核对 —— 这是我们与通用 AI 最本质的差别。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>09 / 13</Text>
+  </Box>
+</Slide>

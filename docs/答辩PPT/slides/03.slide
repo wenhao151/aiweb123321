@@ -1,0 +1,49 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>作品全貌：四个模块，四条底线</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>02 · OVERVIEW</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 26, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 176, flexDirection: 'row', gap: 24 }}>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 44, height: 30, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold' }}>01</Text></Box>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>课程知识库</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.5 }}>PDF / DOCX / TXT / MD 上传解析，分块入 Chroma；sha256 去重，删除同步清向量，分块可预览。</Text>
+      </Box>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 44, height: 30, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold' }}>02</Text></Box>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>分层教学引擎</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.5 }}>六类问题自动分类，两种模式，L1→L4 四级提示；服务端跳级钳制与答案泄露护栏。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 176, flexDirection: 'row', gap: 24 }}>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 44, height: 30, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold' }}>03</Text></Box>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>截图报错分析</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.5 }}>本地 OCR / 视觉模型双通道；识别文字可编辑后重跑，复用同一套检索与教学链路。</Text>
+      </Box>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 44, height: 30, background: '#1E4FA8', alignItems: 'center', justifyContent: 'center' }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold' }}>04</Text></Box>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>演示模式与一键复现</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.5 }}>无 Key、断网也能走通主流程；干净机器 5 步、10 分钟内可复现。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 82, background: '#E8EFF8', borderLeft: '4px solid #1E4FA8', paddingLeft: 22, paddingTop: 12, flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>四条底线</Text>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.4 }}>有据可查　·　无据则明说　·　引导优先　·　演示模式诚实标注</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>03 / 13</Text>
+  </Box>
+</Slide>

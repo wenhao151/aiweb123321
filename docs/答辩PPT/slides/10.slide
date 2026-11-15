@@ -1,0 +1,35 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>124 个测试，10 分钟复现</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>08 · VERIFICATION</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 26, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 150, flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 24, paddingTop: 16, flexDirection: 'column', gap: 6 }}>
+        <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>124</Text>
+        <Text style={{ fontSize: 18, color: '#4A5568' }}>后端 pytest 全部通过，覆盖 14 个测试文件</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 24, paddingTop: 16, flexDirection: 'column', gap: 6 }}>
+        <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>6/6</Text>
+        <Text style={{ fontSize: 18, color: '#4A5568' }}>check_demo.py 六个标准问题自检通过</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 24, paddingTop: 16, flexDirection: 'column', gap: 6 }}>
+        <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1.15 }}>10</Text>
+        <Text style={{ fontSize: 18, color: '#4A5568' }}>分钟：干净机器从零复现的目标上限</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 192, background: '#F7F9FC', border: '1px solid #D6DCE5', paddingLeft: 24, paddingRight: 24, paddingTop: 16, flexDirection: 'column', gap: 10 }}>
+      <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>评委视角的复现路径</Text>
+      <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.65 }}>① 建虚拟环境装依赖　② 前端 npm install　③ 复制 .env.example 为 .env<br />④ 执行 seed_demo.py 导入演示资料　⑤ 运行 dev.ps1 与 check_demo.py</Text>
+      <Text style={{ fontSize: 18, color: '#D9534F', lineHeight: 1.45 }}>第 ④ 步必做：storage/ 不入库，clone 下来知识库默认是空的。</Text>
+    </Box>
+    <Box style={{ width: 1160, height: 60, borderLeft: '4px solid #1E4FA8', paddingLeft: 22, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.4 }}>前端 npm run build 含 vue-tsc 类型检查通过；无密钥时也能完整走通主流程。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>10 / 13</Text>
+  </Box>
+</Slide>

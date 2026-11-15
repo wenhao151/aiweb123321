@@ -1,0 +1,44 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>六道护栏把「不代写」做成约束</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>06 · AI SAFETY</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 24, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 176, flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>① 编造引用</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>引用只能来自本次命中集合；命中分数低于阈值直接走拒答分支。</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>② 直接给答案</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>代码块超过 6 行截断，完整函数体替换为骨架，索要完整实现的话术自动收敛。</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>③ 恶意代码</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>只做文本分析；全后端没有 exec / eval / subprocess，不执行学生提交的任何代码。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 176, flexDirection: 'row', gap: 20 }}>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>④ 密钥泄露</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>密钥只放后端环境变量；健康检查只回布尔值；.gitignore 排除 .env。</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>⑤ 前端 XSS</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>富文本渲染统一经 DOMPurify 清洗，引用卡片内容不作为 HTML 直接插入。</Text>
+      </Box>
+      <Box style={{ width: 373, border: '1px solid #D6DCE5', paddingLeft: 18, paddingRight: 18, paddingTop: 14, flexDirection: 'column', gap: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>⑥ OCR 猜测</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>识别文字可人工修正后重跑；行号始终标注「识别，可能不准」。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 62, background: '#E8EFF8', borderLeft: '4px solid #1E4FA8', paddingLeft: 22, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.4 }}>结论：把「不代写作业」从产品口号落实为可测试的服务端约束。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>08 / 13</Text>
+  </Box>
+</Slide>

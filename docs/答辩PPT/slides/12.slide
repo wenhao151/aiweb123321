@@ -1,0 +1,27 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>当前局限与后续规划</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>10 · LIMITATIONS</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 24, paddingBottom: 18, flexDirection: 'column', gap: 18 }}>
+    <Box style={{ width: 1160, height: 380, flexDirection: 'row', gap: 24 }}>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 22, paddingRight: 22, paddingTop: 18, flexDirection: 'column', gap: 12 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>当前实现中的局限</Text>
+        <Text style={{ fontSize: 19, color: '#1A2230', lineHeight: 1.75 }}>哈希向量为词面相似度，无语义泛化能力<br />仅 4 份自制示例资料 / 15 个片段<br />无 SSE 流式输出与独立聊天页<br />无 Agent / 工具调用<br />前端主 chunk 1.11 MB，未做代码分割<br />无公网在线演示地址</Text>
+      </Box>
+      <Box style={{ width: 568, border: '1px solid #3D7BD9', background: '#F7F9FC', paddingLeft: 22, paddingRight: 22, paddingTop: 18, flexDirection: 'column', gap: 12 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>后续规划</Text>
+        <Text style={{ fontSize: 19, color: '#1A2230', lineHeight: 1.75 }}>可选接入语义 Embedding，保留离线通道降级<br />扩充真实课程语料，建立评测集<br />补流式渲染与 RAG 对话主界面<br />按问题类型自主选工具并可视化轨迹<br />manualChunks 拆包<br />部署在线 Demo，作为可选加分项</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 68, background: '#E8EFF8', borderLeft: '4px solid #D9534F', paddingLeft: 22, justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, color: '#1A2230', lineHeight: 1.4 }}>以上规划项均不在当前代码中，仅作为展望，答辩中不作为已交付功能陈述。</Text>
+      <Text style={{ fontSize: 18, color: '#4A5568' }}>早期备选的 Qdrant、JWT、教师端、评测看板已与最终实现不一致。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>12 / 13</Text>
+  </Box>
+</Slide>

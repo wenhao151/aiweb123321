@@ -1,0 +1,40 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF', fontFamily: 'Source Han Sans SC, Microsoft YaHei, Arial, sans-serif' }}>
+  <Box style={{ width: 1280, height: 68, background: '#1E4FA8', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 60, paddingRight: 60 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#FFFFFF' }}>创新点：把教学伦理写进服务端</Text>
+    <Text style={{ fontSize: 16, color: '#C9DBF5' }}>09 · INNOVATION</Text>
+  </Box>
+  <Box style={{ width: 1280, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ width: 1280, height: 581, paddingLeft: 60, paddingRight: 60, paddingTop: 24, paddingBottom: 18, flexDirection: 'column', gap: 16 }}>
+    <Box style={{ width: 1160, height: 152, flexDirection: 'row', gap: 24 }}>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 14, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>① 检索驱动的四级引导式生成</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>RAG 命中集合同时约束引用编号与 L1–L4 内容形态，配合跳级钳制形成可验证的教学闭环。</Text>
+      </Box>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 14, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>② 输出侧答案泄露护栏</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>代码块截断、完整函数体骨架化、索要答案话术收敛，让「不代写」成为可测试的服务端约束。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 152, flexDirection: 'row', gap: 24 }}>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 14, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>③ 离线可复现的轻量 RAG</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>自建链路 + 512 维哈希向量 + 混合打分 + Chroma 落盘，无需 GPU、外网或独立向量服务。</Text>
+      </Box>
+      <Box style={{ width: 568, border: '1px solid #D6DCE5', paddingLeft: 20, paddingRight: 20, paddingTop: 14, flexDirection: 'column', gap: 8 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>④ 可解释的诚实设计</Text>
+        <Text style={{ fontSize: 18, color: '#1A2230', lineHeight: 1.5 }}>无据拒答、OCR 不确定性标注、AI 生成示例标记、llm_status 状态回传，来源逐条可核对。</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: 1160, height: 82, background: '#E8EFF8', paddingLeft: 22, paddingTop: 12, flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>应用创新</Text>
+      <Text style={{ fontSize: 19, color: '#1A2230', lineHeight: 1.45 }}>反「代写作业」的交互模式；截图报错经人工修正后复用同一套检索与分层策略。</Text>
+    </Box>
+    <Box style={{ width: 1160, height: 52, borderLeft: '4px solid #1E4FA8', paddingLeft: 20, justifyContent: 'center' }}>
+      <Text style={{ fontSize: 20, color: '#1A2230' }}>社会价值：把 AI 用于促进理解，降低院校部署门槛，保护学习过程。</Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', top: 670, left: 60, width: 1160, height: 24, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>知实 AI（EduRAG）· 决赛答辩</Text>
+    <Text style={{ fontSize: 14, color: '#8B97A8' }}>11 / 13</Text>
+  </Box>
+</Slide>

@@ -391,6 +391,9 @@ server {
 | [docs/06-技术文档大纲.md](docs/06-技术文档大纲.md) | 比赛技术文档（PDF ≤30 页）章节大纲 |
 | [docs/07-演示视频分镜.md](docs/07-演示视频分镜.md) | 5–8 分钟 1080p 演示视频分镜脚本 |
 | [docs/08-技术文档正文.md](docs/08-技术文档正文.md) | 技术文档 PDF（≤30 页）**正文源稿**，7 章 + 附录，可直接排版导出 |
+| [docs/知实AI-技术文档.pdf](docs/知实AI-技术文档.pdf) | **技术文档成品**（PDF，18 页，满足 ≤30 页要求）；排版源稿 `docs/技术文档.html` |
+| [docs/答辩PPT/答辩PPT.pptx](docs/答辩PPT/答辩PPT.pptx) | **决赛答辩 PPT**（13 页）；设计说明与逐页源稿见 `docs/答辩PPT/` |
+| [docs/assets/health-check-evidence.md](docs/assets/health-check-evidence.md) | 真实大模型接入的脱敏验证证据（健康检查与问答指标） |
 
 > `docs/01-架构设计.md`、`docs/02-开发计划.md` 是**早期备选方案**（向量库为 Qdrant，含 JWT / 教师端 / 评测看板），与当前实现不一致，仅作历史设计稿保留。撰写技术文档时请以当前代码和本 README 为准。
 
