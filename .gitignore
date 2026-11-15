@@ -1,0 +1,34 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# ---------- Node ----------
+node_modules/
+dist/
+.npm-cache/
+*.local
+
+# ---------- 运行时数据 ----------
+storage/
+*.log
+.tmp/
+
+# ---------- 配置与密钥 ----------
+.env
+.env.*
+!.env.example
+
+# ---------- IDE / OS ----------
+.idea/
+.vscode/
+.workbuddy/
+Thumbs.db
+desktop.ini
+
+# ---------- 本地临时脚本（含个人路径，不入库）----------
+read_docx.py
